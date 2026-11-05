@@ -9,4 +9,4 @@ Here's a post explaining [why opening backlogs and roadmaps is a good thing](htt
 
 And this is a post about [preferring the term 'routemaps' to 'roadmaps'](https://rossferg.medium.com/making-the-case-for-product-and-service-routemaps-ccc1d78c7111).
 
-I'm keeping the list updated. If you know of an open public sector backlog or roadmap that should be included, [suggest it on GitHub]({{ site.github.repository_url }}/issues/new?template=suggest-a-link.yml) or email me at [fergaloid@gmail.com](mailto:fergaloid@gmail.com).
+I'm keeping the list updated. If you know of an open public sector backlog or roadmap that should be included, [suggest it on GitHub]({{ site.github.repository_url }}/issues/new?template=suggest-a-link.yml).
