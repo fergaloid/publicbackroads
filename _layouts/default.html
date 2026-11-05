@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<base target="_blank">
 <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
 <meta name="description" content="{{ site.description }}">
 <meta property="og:title" content="{{ page.title | default: site.title }}">
@@ -13,7 +14,7 @@
 <body>
 <main>
 <header>
-<h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+<h1><a href="{{ '/' | relative_url }}" target="_self">{{ site.title }}</a></h1>
 </header>
 
 {{ content }}
@@ -22,7 +23,7 @@
 {% assign sections = site.data.links | group_by: "section" %}
 <nav class="contents" aria-label="Contents">
 <span>Jump to:</span>
-{% for section in sections %}<a href="#{{ section.name | slugify }}">{{ section.name }}</a>{% endfor %}
+{% for section in sections %}<a href="#{{ section.name | slugify }}" target="_self">{{ section.name }}</a>{% endfor %}
 </nav>
 
 {% for section in sections %}
@@ -34,8 +35,12 @@
 <ul>
 {% for item in country.items %}
 <li><span class="service">{{ item.service }}</span>
+{% if item.alt_link %}
+<span class="url bilingual"><span class="lang">EN</span><a href="{{ item.link }}">{{ item.link }}</a></span>
+<span class="url bilingual"><span class="lang">{{ item.alt_label | slice: 0, 2 | upcase }}</span><a href="{{ item.alt_link }}">{{ item.alt_link }}</a></span>
+{% else %}
 <a class="url" href="{{ item.link }}">{{ item.link }}</a>
-{% if item.alt_link %}<span class="url">{{ item.alt_label | default: "Alternative" }}: <a href="{{ item.alt_link }}">{{ item.alt_link }}</a></span>{% endif %}
+{% endif %}
 <span class="org">{% if item.organisation_url %}<a href="{{ item.organisation_url }}">{{ item.organisation }}</a>{% else %}{{ item.organisation }}{% endif %}</span></li>
 {% endfor %}
 </ul>
