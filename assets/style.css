@@ -15,6 +15,17 @@
     --line: #2e2e2e;
   }
 }
+li .bilingual {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+}
+li .lang {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  padding-top: 0.2rem;
+}
 
 * { box-sizing: border-box; }
 
