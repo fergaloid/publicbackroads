@@ -94,3 +94,12 @@ footer {
   font-size: 0.875rem;
   color: var(--muted);
 }
+li .service {
+  display: block;
+  font-weight: 600;
+}
+li .url {
+  display: block;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
