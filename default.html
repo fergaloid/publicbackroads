@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ site.description }}">
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ site.description }}">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+<main>
+<header>
+<h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+</header>
+
+{{ content }}
+
+{% if page.show_list %}
+{% assign sections = site.data.links | group_by: "section" %}
+<nav class="contents" aria-label="Contents">
+<span>Jump to:</span>
+{% for section in sections %}<a href="#{{ section.name | slugify }}">{{ section.name }}</a>{% endfor %}
+</nav>
+
+{% for section in sections %}
+<section id="{{ section.name | slugify }}">
+<h2>{{ section.name }} <span class="count">{{ section.size }}</span></h2>
+{% assign countries = section.items | group_by: "country" %}
+{% for country in countries %}
+{% if country.name != "" %}<h3><span class="flag" aria-hidden="true">{{ country.items.first.flag }}</span> {{ country.name }}</h3>{% endif %}
+<ul>
+{% for item in country.items %}
+<li><a href="{{ item.link }}">{{ item.service }}</a>{% if item.alt_link %} <a class="alt" href="{{ item.alt_link }}">{{ item.alt_label | default: "Alternative" }}</a>{% endif %}
+<span class="org">{% if item.organisation_url %}<a href="{{ item.organisation_url }}">{{ item.organisation }}</a>{% else %}{{ item.organisation }}{% endif %}</span></li>
+{% endfor %}
+</ul>
+{% endfor %}
+</section>
+{% endfor %}
+{% endif %}
+
+<footer>
+<p><a href="{{ site.github.repository_url }}/issues/new?template=suggest-a-link.yml">Suggest a link</a> · Get the list as data: <a href="{{ site.github.repository_url }}/blob/main/_data/links.csv">CSV</a> or <a href="{{ '/links.json' | relative_url }}">JSON</a> · <a href="{{ site.github.repository_url }}">Source on GitHub</a></p>
+<p>Last updated {{ site.time | date: "%-d %B %Y" }}</p>
+</footer>
+</main>
+</body>
+</html>

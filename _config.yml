@@ -1,0 +1,8 @@
+# Site settings. You can change the words on the right of each colon.
+title: Public sector backlogs and roadmaps
+description: A list of product and service backlogs and routemaps/roadmaps opened in the public domain by public sector organisations around the world.
+
+# Leave the lines below as they are.
+markdown: kramdown
+exclude:
+  - README.md
