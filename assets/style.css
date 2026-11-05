@@ -18,6 +18,7 @@
 li .bilingual {
   display: grid;
   grid-template-columns: 2rem 1fr;
+  column-gap: 0.5rem;
 }
 li .lang {
   font-size: 0.7rem;
