@@ -1,0 +1,43 @@
+name: Suggest a backlog or roadmap
+description: Tell us about an open backlog or roadmap that should be on the list.
+title: "Suggestion: "
+body:
+  - type: input
+    id: link
+    attributes:
+      label: Link to the backlog or roadmap
+      placeholder: https://
+    validations:
+      required: true
+  - type: input
+    id: service
+    attributes:
+      label: Name of the product or service
+      placeholder: e.g. GOV.UK Notify
+    validations:
+      required: true
+  - type: input
+    id: organisation
+    attributes:
+      label: Organisation that runs it
+      placeholder: e.g. Government Digital Service
+    validations:
+      required: true
+  - type: input
+    id: country
+    attributes:
+      label: Country
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Is it a backlog or a routemap/roadmap?
+      options:
+        - Routemap/roadmap
+        - Backlog
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
