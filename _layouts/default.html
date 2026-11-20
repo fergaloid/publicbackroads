@@ -32,7 +32,7 @@
 <h2>{{ section.name }} <span class="count">{{ section.size }}</span></h2>
 {% assign countries = section.items | group_by: "country" %}
 {% for country in countries %}
-{% if country.name != "" %}<h3>{{ country.name }}</h3>{% endif %}
+{% if country.name != "" %}{% assign flag = country.items | map: "flag" | compact | first %}<h3>{% if flag %}<span aria-hidden="true">{{ flag }}</span> {% endif %}{{ country.name }}</h3>{% endif %}
 <ul>
 {% for item in country.items %}
 <li><span class="service">{{ item.service }}</span>
